@@ -8,6 +8,8 @@ public class abc {
 		Arrays.sort(nums);
 		int a = nums[0], b = nums[1];
 		int c = nums[6] - a - b;
+
+		
 		System.out.println(a + " " + b + " " + c);
 	}
 }
