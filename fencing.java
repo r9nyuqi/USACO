@@ -62,7 +62,7 @@ public class fencing {
 
     public static int dfs(int i)
     {
-        int p = 0;
+        int p = 0;  
         visited[i] = true;
        
         minX = Math.min(minX,x[i]);
