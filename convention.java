@@ -3,17 +3,14 @@ import java.io.*;
 
 public class convention {
 
-    static int n;
-    static int m;
-    static int c;
-    static int[] arr;
+   
 	public static void main(String[] args) throws FileNotFoundException {
 		//Scanner in = new Scanner(new File("convention.in"));
         Scanner in = new Scanner(System.in);
-		n = in.nextInt();
-        m = in.nextInt();
-        c = in.nextInt();
-        arr = new int[n];
+		int n = in.nextInt();
+        int m = in.nextInt();
+        int c = in.nextInt();
+        int[] arr = new int[n];
         for(int i = 0; i < n; i ++)
         {
             arr[i] = in.nextInt();
