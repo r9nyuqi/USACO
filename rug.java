@@ -60,7 +60,7 @@ public class rug {
                 {
                     for(int k = 0; k < east.size(); k++)
                     {
-                        if(nX.get(j) - eX.get(k) < nX.get(j) - x[i] && nX.get(k) < x[i])
+                        if(nX.get(j) - eX.get(k) < nX.get(j) - x[i] && nX.get(k) > x[i])
                         {
                             blocked = true;
                         }

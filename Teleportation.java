@@ -10,9 +10,9 @@ public class Teleportation {
         int b = in.nextInt();
         int x = Math.min(c,d);
         int y = Math.max(c,d);
-        
         int lower = Math.min(a,b);
         int higher = Math.max(a,b);
+        
         PrintWriter pw = new PrintWriter(new File("teleport.out"));
         pw.println(Math.min(Math.abs(x-lower) + Math.abs(y-higher),y-x));
         pw.close(); 
