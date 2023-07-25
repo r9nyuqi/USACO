@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class BCount {
+	public static void main(String[] args) throws IOException {
+		Scanner in = new Scanener(new FileReader("bcount.in"));
+		PrintWriter out =new PrintWriter(new BufferedWriter(new FileWriter("bcount.out")));
+		
+		int cowNum = in.nextInt();
+		int queryNum = in.nextInt();
+
+		int[] holsteins = new int[cowNum + 1];
+		int[] guernseys = new int[cowNum + 1];
+		int[] jerseys = new int[cowNum + 1];
+		for (int i = 1; i <= cowNum; i++) {
+			holsteins[i] += holsteins[i - 1];
+			guernseys[i] += guernseys[i - 1];
+			jerseys[i] += jerseys[i - 1];
+
+			int breed = int.nextInt();
+			if (breed == 1) {
+				holsteins[i]++;
+			} else if (breed == 2) {
+				guernseys[i]++;
+			} else if (breed == 3) {
+				jerseys[i]++;
+			}
+		}
+
+		for (int q = 0; q < queryNum; q++) {
+			
+			int start = in.nextInt();
+			int end = in.nextInt();
+
+			int holstein = holsteins[end] - holsteins[start - 1];
+			int guernsey = guernseys[end] - guernseys[start - 1];
+			int jersey = jerseys[end] - jerseys[start - 1];
+			out.println(holstein + " " + guernsey + " " + jersey);
+		}
+		out.close();
+	}
+}
