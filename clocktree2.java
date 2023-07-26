@@ -97,8 +97,6 @@ public class clocktree2 {
             {
                 first = false;
             }
-
-            
         }
         if(first)
         {
@@ -121,7 +119,6 @@ public class clocktree2 {
 
                 }
             }
-
         }
         for(int j : adj[i])
         {
