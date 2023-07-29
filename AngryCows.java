@@ -31,33 +31,23 @@ public class AngryCows {
            
             int count = 0;
            
-            if((max + min) % 2 == 0)
-            {
-                mid = (max + min)/2;
-            }
-            else
-            {
-                mid = (max + min - 1)/2;
-            }
-             System.out.println(mid);
-            System.out.println(min);
-             System.out.println(max);
+            mid = (max + min) /2;
+            
               
             int cow = first + mid;
 
             while(cow + mid < last)
             {
-                System.out.println("cow: " + cow);
-                int closest = 0;
-                for(int l = arr.length-1; l <= 0; l--)
+                count ++;
+                for(int i : arr)
                 {
-                    if(arr[l] > cow+mid)
+                    if(i > cow+mid)
                     {
-                        closest = arr[l];
+                        cow = i + mid;
+                        break;
                     }
                 }
-                cow = closest + mid;
-                count ++;
+                
             }
             if (count > k)
             {
@@ -67,11 +57,11 @@ public class AngryCows {
             else
             {
                 max = mid;
-                System.out.println("true");
+                
                
             }
            
-            System.out.println();
+          
 
            
           
@@ -85,7 +75,7 @@ public class AngryCows {
        
         
         PrintWriter pw = new PrintWriter(new File("angry.out"));
-        System.out.println();
+        System.out.println(min);
 	    pw.print(min);
 		pw.close();
         in.close();

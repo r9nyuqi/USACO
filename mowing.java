@@ -1,115 +1,56 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
-import java.io.*;
+public class mowing{
+  public static void main(String[] args) throws FileNotFoundException{
+    Scanner scan = new Scanner(new File("mowing.in"));
+    int n = scan.nextInt();
+    int[][] arr = new int[2000][2000];
+    int t = 1;
+    int x = 1000;
+    int y = 1000;
+    int time = 0;
+    char dir = 'a';
+    int c = 1000000000;
+    ArrayList<Integer> list = new ArrayList<Integer>();
 
-public class mowing {
-	public static void main(String[] args) throws FileNotFoundException {
-		//Scanner in = new Scanner(new File("mowing.in"));
-        Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-        String[] directions = new String[n];
-        int x = Integer.MAX_VALUE;
-        int[] steps = new int[n];
-        int[][] grid = new int[1000][10000];
-        for(int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++){
+      dir = scan.next().charAt(0);
+      time = scan.nextInt();
+      while(time>0){
+
+        arr[x][y]=t;
+        if(dir == 'N')
         {
-            directions[i] = in.next();
-            steps[i] = in.nextInt();
+          y++;
         }
-        grid[500][500] = 1;
-        int cordX = 500; 
-        int cordY = 500;
-        int count = 0;
-        for(int i = 0; i < n; i++)
+        else if(dir == 'S')
         {
-            
-            for(int j = 0; j < steps[i]; j++)
-            {
-                if(directions[i].equals("N"))
-                {   
-                    cordY++;
-                }
-                else if(directions[i].equals("E"))
-                {
-                    cordX++;
-                }
-                else if(directions[i].equals("S"))
-                {
-                    cordY--;
-                }
-                else if(directions[i].equals("W"))
-                {
-                    cordX--;
-                }
-                if(grid[cordX][cordY] == 1)
-                {
-                    grid[cordX][cordY] = 2;
-                }
-                else
-                    grid[cordX][cordY] = 1;
-            
-            }
+          y--;
         }
-        boolean start = false;
-        cordX = 500;
-        cordY = 500;
-        int tempx = 0;
-        int tempy = 0;
-        for(int i = 0; i < n; i++)
+        else if(dir == 'E')
         {
-            
-            for(int j = 0; j < steps[i]; j++)
-            {
-                if(directions[i].equals("N"))
-                {   
-                    cordY++;
-                    
-                }
-                else if(directions[i].equals("E"))
-                {
-                    cordX++;
-                    
-                }
-                else if(directions[i].equals("S"))
-                {
-                    cordY--;
-                     
-                }
-                else if(directions[i].equals("W"))
-                {
-                    cordX--;
-                    
-                }
-                if(start)
-                {
-                    count++;
-                }
-                if(start && grid[cordX][cordY] == 2 && cordX == tempx && cordY == tempy)
-                {
-                    x = Math.min(x,count);
-                    start = false;
-                    count = 0;
-                    if(!(cordX == tempx && cordY == tempy))
-                    {
-                        tempx = cordX;
-                        tempy = cordY;
-                    }
-                }
-                if(grid[cordX][cordY] == 2)
-                {
-                    tempx = cordX;
-                    tempy = cordY;
-                    start = true;
-                    
-                }
-                
-            
-            }
-        }
-        if(x == Integer.MAX_VALUE)
-        {
-            System.out.println(-1);
+          x--;
         }
         else
-        System.out.println(x);
+        {
+          x++;
+        }
+
+        time--;
+        t++;
+        if(arr[x][y]!=0)
+        {
+          c = Math.min(t-arr[x][y],c);
+        }
+      }
+      
+      
     }
+    PrintWriter pw = new PrintWriter(new File("mowing.out"));
+    pw.println(c);
+    pw.close();
+    System.out.println(c);
+  }
 }
