@@ -3,16 +3,12 @@ import java.io.*;
 
 public class AngryCows {
 	public static void main(String[] args) throws FileNotFoundException {
-		//Scanner in = new Scanner(new File("angry.in"));
-        Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(new File("angry.in"));
+        //Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int k = in.nextInt();
         
         int[] arr = new int[n];
-        int min = 0; 
-        int max = 0;
-        int first = 0;
-        int last = 0;
        
         for(int i = 0; i < arr.length; i++)
         {
@@ -20,68 +16,45 @@ public class AngryCows {
         }
         Arrays.sort(arr);
 
-        first = arr[0];
-        last = arr[n-1];
-        max = arr[arr.length-1];
-        
-       
-        int mid = 0;
-        while(min < max)
-        { 
-           
-            int count = 0;
-           
-            mid = (max + min) /2;
-            
-              
-            int cow = first + mid;
-
-            while(cow + mid < last)
-            {
-                count ++;
-                for(int i : arr)
+        int min = 0;
+		int max = 500000000;
+		while(min != max) {
+			int mid = (min+max)/2;
+			int used = 0;
+			int last = 0;
+			while(last < n) {
+				used++;
+				int curr = last+1;
+				while(curr < n && arr[curr] - arr[last] <= 2*mid) 
                 {
-                    if(i > cow+mid)
-                    {
-                        cow = i + mid;
-                        break;
-                    }
-                }
-                
-            }
-            if (count > k)
+					curr++;
+				}
+				last = curr;
+			}
+			if(used <= k) 
             {
-                min = mid + 1;
-
-            }
-            else
+				max = mid;
+			}
+			else 
             {
-                max = mid;
-                
-               
-            }
-           
+				min = mid+1;
+			}
+		}
+	
+            PrintWriter pw = new PrintWriter(new File("angry.out"));
+            pw.println(min);
+            pw.close();
+            System.out.println(min);
           
 
            
           
-            // System.out.println(mid);
-            
-            // System.out.println(max);
-           
-            // System.out.println(min);
-            // System.out.println();
         }
        
         
-        PrintWriter pw = new PrintWriter(new File("angry.out"));
-        System.out.println(min);
-	    pw.print(min);
-		pw.close();
-        in.close();
-        
+       
         
         
     }
 
-}
+
