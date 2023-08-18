@@ -7,36 +7,27 @@ public class censoring {
         //Scanner in = new Scanner(System.in);
 		String word = in.next();
         String censor = in.next();
-
-        for(int i = 0; i < word.length(); i ++)
+        StringBuilder r = new StringBuilder();
+       
+        for(int i = 0; i < word.length(); i++)
         {
-            boolean match = false;
-            if(word.charAt(i) == censor.charAt(0))
+            r.append(word.charAt(i));
+            if(r.length() >= censor.length())
             {
-                match = true;
-                int index = i;
-                i ++;
-                for(int j = 1; j < censor.length(); j++)
+                if(r.substring((r.length()-censor.length())).equals(censor))
                 {
-                    if(word.charAt(i) != (censor.charAt(j)))
-                    {
-                        i-= j-1;
-                        match = false;
-                        break;
-                    }
-                    i++;
-                }
-                if(match)
-                {
-                    word = word.substring(0,index) + word.substring(i);
-                    i = index-censor.length();
+                    r.delete((r.length()-censor.length()),r.length());
                 }
             }
+            
         }
 
+       
+        
+
         PrintWriter pw = new PrintWriter(new File("censor.out"));
-        pw.println(word);
+        pw.println(r);
         pw.close();
-        System.out.println(word);
+        System.out.println(r);
     }
 }
