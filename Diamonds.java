@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 public class Diamonds {
 	public static void main(String[] args) throws IOException {
-		Scanner in = new Scanner(new FileReader("diamond.in"));
-		
+		//Scanner in = new Scanner(new FileReader("diamond.in"));
+		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 		int k = in.nextInt();
 		int[] list = new int[n];
