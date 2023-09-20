@@ -3,8 +3,8 @@ import java.io.*;
 
 public class AngryCows {
 	public static void main(String[] args) throws FileNotFoundException {
-		Scanner in = new Scanner(new File("angry.in"));
-        //Scanner in = new Scanner(System.in);
+		//Scanner in = new Scanner(new File("angry.in"));
+        Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int k = in.nextInt();
         
