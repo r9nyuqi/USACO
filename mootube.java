@@ -16,7 +16,8 @@ public class mootube {
 
 			if (!used[i[0]]) {
 				int m = Math.min(minRelevance, i[1]);
-				if (m >= k) {
+				
+                if (m >= k) {
 					count++;
 				}
 				count += DFS(k, i[0], m);
