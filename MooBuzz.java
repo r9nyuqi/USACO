@@ -6,21 +6,12 @@ public class MooBuzz {
 		Scanner in = new Scanner(new File("moobuzz.in"));
         //Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-        int count = 1;
-        int r = 1;
-        while(count <= n)
-        {
-            count ++;
-            if(count % 3 == 0 || count % 5 == 0)
-            {
-               n++;
-            
-            }
-            
-            
-          
-        }
-        //System.out.println(n);
+        int[] first8 = {14, 1, 2, 4, 7, 8, 11, 13};
+		int res = 0;
+		res = (n- 1) / 8;
+		res *= 15;
+		res += first8[n% 8];
+      
 
         PrintWriter pw = new PrintWriter(new File("moobuzz.out"));
 		pw.print(n);
