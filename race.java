@@ -1,40 +1,49 @@
-import java.io.*;
-import java.util.*;
 
-class Race {
-	public static void main(String[] args) throws IOException {
-		Scanner sc = new Scanner(new File("race.in"));
-		int k = sc.nextInt();
-		int n = sc.nextInt();
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
-		PrintWriter pw = new PrintWriter(new File("race.out"));
-		for (int q = 0; q < n; q++) {
-			int maxSpeed = sc.nextInt();
-			pw.println(fastestTime(k, maxSpeed));
-		}
-		pw.close();
-	}
+public class race {
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("race.in"));
 
-	static int fastestTime(int dist, int maxSpeed) {
-		int sUp = 0; 
-		int sDown = 0;  
-		int time = 0;
+        int k = in.nextInt();
+        int n = in.nextInt();
+		PrintWriter pw = new PrintWriter("race.out");
+        for (int i = 0; i < n; i += 1) {
+            
+			int ending_speed = in.nextInt();
 
-	
-		for (int currS = 1;; currS++) {
-			sUp += currS;
-			time++;
-			if (sUp + sDown >= dist) 
-            { 
-                return time; 
+            int remain = k;
+            int speed = 0;
+            int time = 0;
+
+            while (true) 
+			{
+                speed += 1;
+                remain -= speed;
+                time += 1;
+
+                if (remain <= 0) 
+				{
+                    break;
+                }
+
+                if (speed >= ending_speed) 
+				{
+                    remain -= speed;
+                    time += 1;
+
+                    if (remain <= 0) 
+					{
+                        break;
+                    }
+                }
             }
 
-			if (currS >= maxSpeed) {
-				sDown += currS;
-				time++;
-				
-				if (sUp + sDown >= dist) { return time; }
-			}
-		}
-	}
+            pw.println(time);
+        }
+        pw.close();
+    }
 }
