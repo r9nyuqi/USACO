@@ -14,7 +14,7 @@ public class MooBuzz {
       
 
         PrintWriter pw = new PrintWriter(new File("moobuzz.out"));
-		pw.print(n);
+		pw.print(res);
 		pw.close();
     }
 }
