@@ -19,7 +19,7 @@ public class visits {
 		N = in.nextInt();
 		M = in.nextInt();
 		
-		cows = in.nextLine().toCharArray();
+		cows = in.next().toCharArray();
 		
 		for (int i = 0; i < N; i++) adj_list[i] = new ArrayList<Integer>();
 		
